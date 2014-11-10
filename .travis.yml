@@ -1,0 +1,15 @@
+language: java
+notifications:
+  hipchat:
+    rooms:
+      secure: gNQkHj+fjYiz/5slfq7Yg4vXeWvSrI/PbYkFOjEaVeducGliiIkxZ05lnu67P8LADQJWN+RYTsX87VfhkrOlDcAExVcUwgjoJ5Bh/OgBKa2DsYLGa89e+J33O2T3ECvVRPN2ez4Tkc8VDDKtWVe0/vy6Pn+Nlw+I/ZeYAshvSbQ=
+deploy:
+  provider: releases
+  api_key:
+    secure: bX57hDvRMID51sXxGHpi/FTKcL7nnJWs0Szm8FkP77mcG5etEriB4/r6SIMfCu+gTaJ5I8BKQJ+iORajG4hFH2J4xbXI9qOb6KlfSiHHdLAhfJFFxw6KNfXUiELAznE9DL6hqBI+BDMmeBH7ngqkfMQT/h9ygw5FMn8UL7MfGVc=
+  file: build/libs/xld-credential-on-host-plugin-4.1.0.jar
+  skip_cleanup: true
+  on:
+    all_branches: true
+    tags: true
+    repo: xebialabs-community/xld-credential-on-host-plugin

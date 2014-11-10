@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS
+    FOR A PARTICULAR PURPOSE. THIS CODE AND INFORMATION ARE NOT SUPPORTED BY XEBIALABS.
+
+-->
+<synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns="http://www.xebialabs.com/deployit/synthetic"
+           xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
+
+    <type type="overthere.AliasSshHost" extends="overthere.SshHost">
+        <property name="credential" kind="ci" required="true" referenced-type="overthere.Credential"/>
+        <property name="username" kind="string" required="true" default="NOTUSED" hidden="true"/>
+        <property name="password" kind="string" password="true" required="false" default="NOTUSED" hidden="true"/>
+        <method name="checkConnection" label="Check connection" delegate="checkConnectionOnAliasHost"/>
+    </type>
+
+    <type type="overthere.AliasCifsHost" extends="overthere.CifsHost">
+        <property name="credential" kind="ci" required="true" referenced-type="overthere.Credential"/>
+        <property name="username" kind="string" required="true" default="NOTUSED" hidden="true"/>
+        <property name="password" kind="string" password="true" required="true" default="NOTUSED" hidden="true"/>
+        <method name="checkConnection" label="Check connection" delegate="checkConnectionOnAliasHost"/>
+    </type>
+
+    <type-modification type="udm.DeployedApplication">
+        <property name="checkConnection" kind="boolean" default="true" required="false"/>
+    </type-modification>
+
+</synthetic>
