@@ -26,7 +26,7 @@ public class CredentialHostTasks {
         return host.checkConnection();
     }
 
-    @Delegate(name = "runInjectedControlTaskScript")
+    @Delegate(name = "credentialShellScript")
     public List<Step> runInjectedControlTaskScript(ConfigurationItem ci, String method, Map<String, String> arguments) {
         Host host = null;
         Container container = null;
