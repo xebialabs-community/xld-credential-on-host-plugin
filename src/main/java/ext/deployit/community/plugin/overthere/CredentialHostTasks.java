@@ -20,14 +20,14 @@ import com.xebialabs.deployit.plugin.overthere.Host;
 public class CredentialHostTasks {
 
     @Delegate(name = "checkConnectionOnAliasHost")
-    public List<Step> checkConnectionOnAliasHost(ConfigurationItem ci, String method, Map<String, String> arguments) {
+    static public List<Step> checkConnectionOnAliasHost(ConfigurationItem ci, String method, Map<String, String> arguments) {
         Host host = (Host) ci;
         new CredentialProcessor().setCredentials(host, "username", "password");
         return host.checkConnection();
     }
 
     @Delegate(name = "credentialShellScript")
-    public List<Step> runInjectedControlTaskScript(ConfigurationItem ci, String method, Map<String, String> arguments) {
+    static public List<Step> runInjectedControlTaskScript(ConfigurationItem ci, String method, Map<String, String> arguments) {
         Host host = null;
         Container container = null;
         if(ci instanceof Host) host = (Host) ci;
@@ -39,7 +39,6 @@ public class CredentialHostTasks {
         if(CredentialProcessor.SUPPORTED_TYPES.contains(host.getType())) {
             new CredentialProcessor().setCredentials(host, "username", "password");
         }
-        
         List<Step> output = new ArrayList<Step>();
         HashMap<String, Object> context = new HashMap<String,Object>();
         context.put("host", host);

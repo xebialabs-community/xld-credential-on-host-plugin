@@ -18,7 +18,7 @@ apply plugin: 'maven'
 group = 'com.xebialabs.deployit.community'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
-version = '4.1.0'
+version = '4.2.0-SNAPSHOT'
 def apiVersion = '4.5.2'
 def xldeployHome = "$System.env.XLDEPLOY_HOME"
 
@@ -38,27 +38,10 @@ configurations {
     compile {
         transitive = false
     }
-    itestCompile { extendsFrom testCompile }
-    itestRuntime { extendsFrom itestCompile, testRuntime }
 }
 
 dependencies {
     compile fileTree(dir: "$xldeployHome/lib", include: ['*.jar'])
-    testCompile "org.hamcrest:hamcrest-core:1.2.1"
-    testCompile "org.hamcrest:hamcrest-library:1.2.1"
-    testCompile "com.google.guava:guava:16.0.1"
-    testCompile "junit:junit-dep:4.10"
-    itestCompile fileTree(dir: "$xldeployHome/lib", include: ['*.jar'])
-}
-
-sourceSets {
-    itest {
-        java {
-            srcDirs = ['src/test/itest']
-        }
-        compileClasspath = sourceSets.main.output + configurations.testCompile + configurations.itestCompile
-        runtimeClasspath = sourceSets.itest.output + configurations.itestCompile + sourceSets.main.output + configurations.itestRuntime
-    }
 }
 
 import org.apache.tools.ant.filters.*
@@ -89,13 +72,4 @@ license {
     strictCheck true
 }
 
-task itest(dependsOn: 'itestClasses',type: Test) {
-    testClassesDir = sourceSets.itest.output.classesDir
-    classpath = sourceSets.itest.runtimeClasspath
-}
-
-itest.configure {
-    useJUnit() {
-    }
-}   
 
