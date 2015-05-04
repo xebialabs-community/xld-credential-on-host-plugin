@@ -38,7 +38,7 @@ public class CredentialProcessor {
     static final Set<Type> SUPPORTED_TYPES = of(Type.valueOf("overthere.AliasSshHost"), Type.valueOf("overthere.AliasCifsHost"));
 
     @PrePlanProcessor
-    public List<Step> injectPersonalCredentials(DeltaSpecification specification) {
+    static public List<Step> injectPersonalCredentials(DeltaSpecification specification) {
         final Boolean checkConnection = isCheckConnection(specification.getDeployedApplication());
         final Set<Host> hosts = newHashSet();
         hosts.addAll(newHashSet(transform(specification.getDeltas(), DEPLOYED_TO_HOST)));
@@ -58,14 +58,14 @@ public class CredentialProcessor {
         return newArrayList(concat(transform));
     }
 
-    private Boolean isCheckConnection(final DeployedApplication deployedApplication) {
+    static private Boolean isCheckConnection(final DeployedApplication deployedApplication) {
         if (!deployedApplication.hasProperty("checkConnection")) {
             return false;
         }
         return deployedApplication.getProperty("checkConnection");
     }
 
-    void setCredentials(final Host host, final String usernamePropertyName, final String passwordPropertyName) {
+    static void setCredentials(final Host host, final String usernamePropertyName, final String passwordPropertyName) {
         final Credential credential = host.getProperty("credential");
         logger.debug("set {} property on host {}", usernamePropertyName, host.getId());
         host.setProperty(usernamePropertyName, credential.getUsername());
