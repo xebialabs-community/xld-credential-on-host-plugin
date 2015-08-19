@@ -5,11 +5,6 @@
  */
 package ext.deployit.community.plugin.overthere;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import com.xebialabs.deployit.plugin.api.flow.Step;
 import com.xebialabs.deployit.plugin.api.udm.ConfigurationItem;
 import com.xebialabs.deployit.plugin.api.udm.Container;
@@ -17,7 +12,13 @@ import com.xebialabs.deployit.plugin.api.udm.Delegate;
 import com.xebialabs.deployit.plugin.generic.step.ScriptExecutionStep;
 import com.xebialabs.deployit.plugin.overthere.Host;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class CredentialHostTasks {
+
 
     @Delegate(name = "checkConnectionOnAliasHost")
     static public List<Step> checkConnectionOnAliasHost(ConfigurationItem ci, String method, Map<String, String> arguments) {
@@ -53,5 +54,4 @@ public class CredentialHostTasks {
         output.add(scriptStep);
         return output;
     }
-
 }

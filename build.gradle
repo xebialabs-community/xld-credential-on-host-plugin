@@ -18,19 +18,16 @@ apply plugin: 'maven'
 group = 'com.xebialabs.deployit.community'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
-version = '4.2.0-SNAPSHOT'
-def apiVersion = '4.5.2'
-def xldeployHome = "$System.env.XLDEPLOY_HOME"
+version = '4.2.0'
+//def xldeployHome = "$System.env.XLDEPLOY_HOME"
+//def xldeployHome = "/Users/coert/xld/xl-deploy-5.0.3-server"
+def xldeployHome = "/Users/coert/xld/xl-deploy-4.5.5-server"
 
 repositories {
     mavenLocal()
     mavenCentral()
     maven {
-        credentials {
-            username 'community-plugins'
-            password 'community'
-        }
-        url 'http://nexus.xebialabs.com/nexus/content/repositories/releases'
+        url 'https://dist.xebialabs.com/public/maven2/'
     }
 }
 
@@ -42,6 +39,7 @@ configurations {
 
 dependencies {
     compile fileTree(dir: "$xldeployHome/lib", include: ['*.jar'])
+    compile fileTree(dir: "$xldeployHome/plugins", include: ['*.jar'])
 }
 
 import org.apache.tools.ant.filters.*
