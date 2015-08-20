@@ -17,7 +17,7 @@ Place the plugin JAR file into your `SERVER_HOME/plugins` directory.
 
 The `checkConnection` property on the udm.DeployedApplication type offers to generate CheckConnection Step on all the credential hosts..
 
-![Configuration] (/img/alias.png)
+![Configuration] (/img/credential.png)
 
 
 ![Configured Host] (/img/aliasHost.png)
