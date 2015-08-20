@@ -7,7 +7,7 @@ Two new types - `overthere.AliasSshHost` and `overthere.AliasCifsHost`-  provide
 # Requirements #
 
 * **Deployit requirements**
-	* **Deployit**: version 5.0.0+
+	* **XL Deploy**: version 5.0.0+
 
 # Installation #
 
