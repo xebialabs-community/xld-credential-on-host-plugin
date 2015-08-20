@@ -26,7 +26,7 @@ The `checkConnection` property on the udm.DeployedApplication type offers to gen
 
 A controltask delegate was added to allow script-based controltasks to work. In order to execute script-based control tasks on a credential host you need to make two adjustments:
 - Instead of "shellScript" as the delegate now use "credentialShellScript"
-- Instead of providing the path to the controltask script through the "script" attribute now use the "argument1" atribute (if argument1 is not provided the path defaults to a script with ame name as the menthod in the root)
+- Instead of providing the path to the controltask script through the "script" attribute now use the "argument1" atribute (if argument1 is not provided the path defaults to a script in the root with same name as the method)
 
 
 
