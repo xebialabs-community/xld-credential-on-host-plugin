@@ -18,10 +18,10 @@ apply plugin: 'maven'
 group = 'com.xebialabs.deployit.community'
 sourceCompatibility = 1.6
 targetCompatibility = 1.6
-version = '4.2.0'
+version = '5.0.0'
 //def xldeployHome = "$System.env.XLDEPLOY_HOME"
-//def xldeployHome = "/Users/coert/xld/xl-deploy-5.0.3-server"
-def xldeployHome = "/Users/coert/xld/xl-deploy-4.5.5-server"
+def xldeployHome = "/Users/coert/xld/xl-deploy-5.0.3-server"
+//def xldeployHome = "/Users/coert/xld/xl-deploy-4.5.5-server"
 
 repositories {
     mavenLocal()

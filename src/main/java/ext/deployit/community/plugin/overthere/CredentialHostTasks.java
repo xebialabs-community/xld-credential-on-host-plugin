@@ -10,6 +10,7 @@ import com.xebialabs.deployit.plugin.api.udm.ConfigurationItem;
 import com.xebialabs.deployit.plugin.api.udm.Container;
 import com.xebialabs.deployit.plugin.api.udm.Delegate;
 import com.xebialabs.deployit.plugin.generic.step.ScriptExecutionStep;
+import com.xebialabs.deployit.plugin.overthere.CheckConnectionDelegate;
 import com.xebialabs.deployit.plugin.overthere.Host;
 
 import java.util.ArrayList;
@@ -19,12 +20,11 @@ import java.util.Map;
 
 public class CredentialHostTasks {
 
-
     @Delegate(name = "checkConnectionOnAliasHost")
     static public List<Step> checkConnectionOnAliasHost(ConfigurationItem ci, String method, Map<String, String> arguments) {
         Host host = (Host) ci;
         new CredentialProcessor().setCredentials(host, "username", "password");
-        return host.checkConnection();
+        return CheckConnectionDelegate.executedScriptDelegate(host,null,null,null);
     }
 
     @Delegate(name = "credentialShellScript")

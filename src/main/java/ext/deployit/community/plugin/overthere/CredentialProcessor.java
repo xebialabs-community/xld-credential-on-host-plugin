@@ -9,6 +9,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+
+import com.xebialabs.deployit.plugin.overthere.CheckConnectionDelegate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.google.common.base.Function;
@@ -39,7 +41,7 @@ public class CredentialProcessor {
 
     @PrePlanProcessor
     public static List<Step> injectPersonalCredentials(DeltaSpecification specification) {
-        final Boolean checkConnection = false;
+        final Boolean checkConnection = isCheckConnection(specification.getDeployedApplication());
         final Set<Host> hosts = newHashSet();
         hosts.addAll(newHashSet(transform(specification.getDeltas(), DEPLOYED_TO_HOST)));
         hosts.addAll(newHashSet(transform(specification.getDeltas(), PREVIOUS_TO_HOST)));
@@ -52,7 +54,7 @@ public class CredentialProcessor {
             public List<Step> apply(final Host host) {
                 logger.debug("CredentialProcessor injects credentials in a host {} ", host.getId());
                 setCredentials(host, "username", "password");
-                return (checkConnection ? host.checkConnection() : Collections.EMPTY_LIST);
+                return (checkConnection ? CheckConnectionDelegate.executedScriptDelegate(host, null, null, null) : Collections.EMPTY_LIST);
             }
         });
         return newArrayList(concat(transform));
