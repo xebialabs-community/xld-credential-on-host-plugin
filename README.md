@@ -8,6 +8,7 @@ Two new types - `overthere.AliasSshHost` and `overthere.AliasCifsHost`-  provide
 
 * **Deployit requirements**
 	* **XL Deploy**: version 5.0.0+
+	* XL Deploy need to support overthere.SmbHost type
 
 # Installation #
 

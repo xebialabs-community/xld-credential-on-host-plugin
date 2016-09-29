@@ -37,7 +37,7 @@ import static com.google.common.collect.Sets.newHashSet;
 
 public class CredentialProcessor {
 
-    static final Set<Type> SUPPORTED_TYPES = of(Type.valueOf("overthere.AliasSshHost"), Type.valueOf("overthere.AliasCifsHost"));
+    static final Set<Type> SUPPORTED_TYPES = of(Type.valueOf("overthere.AliasSshHost"), Type.valueOf("overthere.AliasCifsHost"), Type.valueOf("overthere.AliasSmbHost"));
 
     @PrePlanProcessor
     public static List<Step> injectPersonalCredentials(DeltaSpecification specification) {
