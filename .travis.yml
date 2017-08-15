@@ -1,4 +1,9 @@
+sudo: required
 language: java
+install: true
+script: ./gradlew compileDocker
+services:
+ - docker
 notifications:
   hipchat:
     rooms:

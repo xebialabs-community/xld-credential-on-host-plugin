@@ -1,25 +1,26 @@
-defaultTasks 'build'
-
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath "nl.javadude.gradle.plugins:license-gradle-plugin:0.11.0"
-    }
+plugins {
+    id "com.github.hierynomus.license" version "0.14.0"
+    id "com.xebialabs.xl.docker" version "1.1.0"
 }
 
-apply plugin: "com.github.hierynomus.license"
 apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'eclipse'
 apply plugin: 'maven'
 
+defaultTasks 'build'
+
+xlDocker {
+    compileImage = 'xebialabs/xld_dev_compile'
+    compileVersion = 'v7.0.0.1'
+    runImage = 'xebialabs/xld_dev_run'
+    runVersion = 'v7.0.0.1'
+    runPortMapping = '14516:4516'
+}
+
 group = 'com.xebialabs.deployit.community'
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
 version = '5.0.0'
-def xldeployHome = "$System.env.XLDEPLOY_HOME"
+def apiVersion = '2017.4.0'
 
 repositories {
     mavenLocal()
@@ -36,8 +37,9 @@ configurations {
 }
 
 dependencies {
-    compile fileTree(dir: "$xldeployHome/lib", include: ['*.jar'])
-    compile fileTree(dir: "$xldeployHome/plugins", include: ['*.jar'])
+    compile "com.xebialabs.deployit:udm-plugin-api:$apiVersion"
+    compile 'com.google.guava:guava:19.0'
+    compile zipTree("$xlDeployHome/plugins/remoting-plugin-7.0.0.xldp")
 }
 
 import org.apache.tools.ant.filters.*
