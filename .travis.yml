@@ -1,13 +1,12 @@
 sudo: required
 language: java
 install: true
-script: ./gradlew compileDocker
+script: "./gradlew compileDocker"
 services:
- - docker
+- docker
 notifications:
-  hipchat:
-    rooms:
-      secure: gNQkHj+fjYiz/5slfq7Yg4vXeWvSrI/PbYkFOjEaVeducGliiIkxZ05lnu67P8LADQJWN+RYTsX87VfhkrOlDcAExVcUwgjoJ5Bh/OgBKa2DsYLGa89e+J33O2T3ECvVRPN2ez4Tkc8VDDKtWVe0/vy6Pn+Nlw+I/ZeYAshvSbQ=
+  slack:
+    secure: PWMqOK+IBe2mYfYh2mfBUKeJZ4yl0yfd9oLcPhFjn14I6wGrUNZB2yYMaigEqYJ2Pvd14TmUuaWmXHREFY91tuzecy2BsVh5I88EbKSgeAEafu31DsjMpXwkIMrlYrwy2JqLjSV+eAgkeWjKfz8ROqBpouTHHWDqXLN7DEtPozY=
 deploy:
   provider: releases
   api_key:
