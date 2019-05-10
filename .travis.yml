@@ -11,7 +11,7 @@ notifications:
 deploy:
   provider: releases
   api_key:
-    secure: bX57hDvRMID51sXxGHpi/FTKcL7nnJWs0Szm8FkP77mcG5etEriB4/r6SIMfCu+gTaJ5I8BKQJ+iORajG4hFH2J4xbXI9qOb6KlfSiHHdLAhfJFFxw6KNfXUiELAznE9DL6hqBI+BDMmeBH7ngqkfMQT/h9ygw5FMn8UL7MfGVc=
+    secure: G5gyp7JOncB+bemBjOONUgsypF/Ax+1jsgueDxBffF5999uCOHMW0OC8/zYhKfOTLaenwzZdFxuLtRXxm18tKmhP2LPITKVNzGdHeMWJosDA1r4ab77PFoKmzPgpv/nCxQbgPTTZyHod6inkfRvAvp2bN3DRc869UmSh0L3P9B0=
   file: build/libs/xld-credential-on-host-plugin-4.1.0.jar
   skip_cleanup: true
   on:
